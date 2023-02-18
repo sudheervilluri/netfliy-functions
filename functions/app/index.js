@@ -5,11 +5,14 @@ import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import compression from 'compression'
 import customLogger from '../utils/logger'
+import API from './nse/index'
 
 /* My express App */
 export default function expressApp(functionName) {
   const app = express()
   const router = express.Router()
+
+  var NSEAPI = API;
 
   // gzip responses
   router.use(compression())
@@ -83,6 +86,12 @@ export default function expressApp(functionName) {
     res.send('hello world')
   })
 
+  router.get("/get_market_status", (req, res, next) => {
+    NSEAPI.getMarketStatus()
+      .then(function (response) {
+        res.json(response.data);
+      });
+  });
 
   // Attach logger
   app.use(morgan(customLogger))
