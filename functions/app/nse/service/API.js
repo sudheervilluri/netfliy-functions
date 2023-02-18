@@ -1,4 +1,3 @@
-const csv2Json = require('../../utils/csv2Json');
 
 const MARKET_STATUS_URL = require('../constant').MARKET_STATUS_URL;
 const INDICES_WATCH_URL = require('../constant').INDICES_WATCH_URL;
@@ -74,11 +73,6 @@ function searchTransformer(isIndex) {
   }
 }
 
-function fetchCSV(url) {
-  return fetch(url)
-    .then(response => response.text())
-    .then(csv2Json);
-}
 
 function getMarketStatus() {
   return fetch(MARKET_STATUS_URL)
