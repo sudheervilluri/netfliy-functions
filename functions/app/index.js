@@ -46,6 +46,10 @@ export default function expressApp(functionName) {
           <a href='/.netlify/functions/${functionName}/hello'>View /hello route</a>
         </div>
 
+        <div>
+          <a href='/.netlify/functions/${functionName}/get_market_status'>View /get_market_status route</a>
+        </div>
+
         <br/>
         <br/>
 
